@@ -6,4 +6,5 @@
 <section>
 	<!-- svelte-ignore a11y-missing-content -->
 	<a class="btn btn-close col text-start" href="/" />
+	<p class="text-center">*Not yet Implemented*</p>
 </section>
