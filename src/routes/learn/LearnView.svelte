@@ -39,6 +39,7 @@
 		quests.forEach((quest, index) => {
 			if (quest.userInput !== quest.answer) {
 				if (jump) {
+					advance(`Question-${index}`);
 					jump = false;
 				}
 				quest.isIncorrect = true;
@@ -130,9 +131,7 @@
 				<button
 					type="button"
 					class="btn btn-primary"
-					on:click={() => {
-						if (advance(`Question-${index + 1}`) != 'wtf') index += 1;
-					}}>Next</button
+					on:click={() => advance(`Question-${index + 1}`)}>Next</button
 				>
 			{:else}
 				<button
