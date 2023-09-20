@@ -5,8 +5,8 @@
 	function gen(count: number): Quests[] {
 		let quests: Quests[] = [];
 		for (let i = 1; i < count + 1; i++) {
-			let a = getRandomInt(0, 300);
-			let b = getRandomInt(0, 200);
+			let a = getRandomInt(0, 1000);
+			let b = getRandomInt(0, 1000);
 			quests.push({ question: `${a} + ${b}`, answer: a + b });
 		}
 		return quests;

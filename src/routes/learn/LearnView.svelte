@@ -159,7 +159,7 @@
 	<span slot="header"> Info </span>
 	<div class="text-center" slot="body">
 		<h3 class="text-success">Congratulations!</h3>
-		<p>You did it correct!</p>
+		<p>You did it correct! Rating of your powers: {lives}/3</p>
 		<a class="btn btn-primary" href="/learn">Ok!</a>
 	</div>
 </Dialog>
