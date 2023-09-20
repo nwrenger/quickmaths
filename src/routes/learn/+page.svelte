@@ -9,8 +9,8 @@
 
 	<h3 class="d-flex justify-content-center mb-3">Learn</h3>
 	<p class="text-center">
-		Welcome to the Learn Mode! Select below which kind of Calculating you want to improve. You have
-		in total 3 Lives and therefore three tries. On wrong answers you'll get hints!
+		Welcome to the Learn Mode! You have in total 3 Lives and therefore 3 tries. On wrong answers
+		you'll get hints! Select below which kind of Calculating you want to improve.
 	</p>
 	<div class="row pb-3 mx-auto m-0">
 		<div class="col-sm-6 mb-3 mb-sm-0 d-grid gap-3">

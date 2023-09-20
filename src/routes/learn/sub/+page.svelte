@@ -1,5 +1,5 @@
 <script lang="ts">
-	import LearnView, { Quests } from '../../../components/LearnView.svelte';
+	import LearnView, { Quests } from '../LearnView.svelte';
 	import { getRandomInt } from '../../../lib/utils';
 
 	function gen(count: number): Quests[] {
