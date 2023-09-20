@@ -39,8 +39,6 @@
 		quests.forEach((quest, index) => {
 			if (quest.userInput !== quest.answer) {
 				if (jump) {
-					console.log(advance(`Question-${index}`));
-					console.log('s');
 					jump = false;
 				}
 				quest.isIncorrect = true;
@@ -55,7 +53,6 @@
 	// macro for jumping to the tabs
 	function advance(string: string) {
 		const triggerEl = document.querySelector(`#tab button[data-bs-target="#${string}"]`);
-		console.log(triggerEl);
 		if (triggerEl) {
 			const instance = Tab.getOrCreateInstance(triggerEl);
 			if (instance) {
