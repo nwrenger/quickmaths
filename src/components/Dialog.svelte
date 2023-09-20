@@ -2,7 +2,7 @@
 	let dialog: HTMLDialogElement;
 
 	export function open() {
-		if (!dialog.attributes.getNamedItem('open')) {
+		if (!dialog.attributes.getNamedItem("open")) {
 			dialog.showModal();
 		}
 	}

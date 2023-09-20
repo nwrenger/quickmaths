@@ -9,6 +9,6 @@ declare global {
 	}
 }
 
-declare module 'bootstrap/js/dist/tab';
+declare module "bootstrap/js/dist/tab";
 
 export {};

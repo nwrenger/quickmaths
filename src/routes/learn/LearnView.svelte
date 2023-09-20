@@ -8,9 +8,9 @@
 </script>
 
 <script lang="ts">
-	import { goto } from '$app/navigation';
-	import { Tab } from 'bootstrap';
-	import Dialog from '../../components/Dialog.svelte';
+	import { goto } from "$app/navigation";
+	import { Tab } from "bootstrap";
+	import Dialog from "../../components/Dialog.svelte";
 
 	export let quests: Quests[];
 
@@ -59,7 +59,7 @@
 			if (instance) {
 				instance.show();
 			} else {
-				return 'wtf';
+				return "wtf";
 			}
 		}
 	}
@@ -73,7 +73,7 @@
 	<div class="text-center p-0 d-flex col justify-content-end">
 		Lives:
 		<span class="badge text-bg-danger text-wrap ms-2">
-			{lives < 0 ? 'No More lives! The answers will be Shown!' : lives}
+			{lives < 0 ? "No More lives! The answers will be Shown!" : lives}
 		</span>
 	</div>
 </div>
@@ -121,9 +121,9 @@
 					Wrong, The correct value would be {lives >= 0
 						? quest.userInput
 							? quest.answer > quest.userInput
-								? 'Bigger'
-								: 'Smaller'
-							: 'Idk, Wrong Input'
+								? "Bigger"
+								: "Smaller"
+							: "Idk, Wrong Input"
 						: quest.answer}!
 				</div>
 			</div>
