@@ -8,7 +8,6 @@
 </script>
 
 <script lang="ts">
-	import { goto } from "$app/navigation";
 	import { Tab } from "bootstrap";
 	import Dialog from "../../components/Dialog.svelte";
 
@@ -115,6 +114,7 @@
 					id="Question-{index}-input"
 					placeholder="Input answer..."
 					required
+					readonly={lives < 0}
 				/>
 				<div class="valid-feedback">Looks good!</div>
 				<div class="invalid-feedback">
