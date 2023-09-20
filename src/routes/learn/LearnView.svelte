@@ -10,8 +10,12 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { Tab } from 'bootstrap';
+	import Dialog from '../../components/Dialog.svelte';
 
 	export let quests: Quests[];
+
+	let correctDialog: Dialog;
+	let incorrectDialog: Dialog;
 
 	// total lives
 	let lives: number = 3;
@@ -140,13 +144,32 @@
 						class="btn btn-danger"
 						on:click={() => {
 							getAnswers(index);
-							lives -= 1;
-							if (validateAnswers()) goto('/learn/correct');
-							if (lives < -1) goto('/learn/incorrect');
+							if (validateAnswers()) {
+								correctDialog.open();
+							} else {
+								lives -= 1;
+							}
+							if (lives < -1) incorrectDialog.open();
 						}}>Finish</button
 					>
 				{/if}
 			</div>
 		{/each}
 	</div>
+	<Dialog bind:this={correctDialog}>
+		<span slot="header"> Info </span>
+		<div class="text-center" slot="body">
+			<h3 class="text-success">Congratulations!</h3>
+			<p>You did it correct!</p>
+			<a class="btn btn-primary" href="/learn">Ok!</a>
+		</div>
+	</Dialog>
+	<Dialog bind:this={incorrectDialog}>
+		<span slot="header"> Info </span>
+		<div class="text-center" slot="body">
+			<h3 class="text-danger">No more Lives!</h3>
+			<p>You couldn't do it..I know..</p>
+			<a class="btn btn-primary" href="/learn">Ok!</a>
+		</div>
+	</Dialog>
 </section>
