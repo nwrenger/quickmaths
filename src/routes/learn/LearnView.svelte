@@ -70,7 +70,7 @@
 <div class="row align-items-center mx-auto">
 	<div class="col p-0">
 		<!-- svelte-ignore a11y-missing-content -->
-		<a class="btn btn-close col text-start" href="/learn" />
+		<a class="btn btn-close" aria-label="Close" href="/learn" />
 	</div>
 	<div class="text-center p-0 d-flex col justify-content-end">
 		Lives:

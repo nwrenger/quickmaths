@@ -5,7 +5,7 @@
 
 <section>
 	<!-- svelte-ignore a11y-missing-content -->
-	<a class="btn btn-close col text-start" href="/" />
+	<a class="btn btn-close" aria-label="Close" href="/" />
 
 	<h3 class="d-flex justify-content-center mb-3">Learn</h3>
 	<p class="text-center">
