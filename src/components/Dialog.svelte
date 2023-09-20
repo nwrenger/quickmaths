@@ -15,10 +15,10 @@
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<!-- svelte-ignore a11y-no-static-element-interactions -->
 			<!-- svelte-ignore a11y-missing-attribute -->
+			<!-- svelte-ignore a11y-interactive-supports-focus -->
 			<a
-				type="button"
+				role="button"
 				class="btn-close justify-content-end"
-				data-bs-dismiss="modal"
 				aria-label="Close"
 				on:click={() => dialog.close()}
 			/>
