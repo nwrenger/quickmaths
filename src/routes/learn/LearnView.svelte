@@ -37,7 +37,7 @@
 		let jump = true;
 		quests.forEach((quest, index) => {
 			if (quest.userInput !== quest.answer) {
-				if (jump) {
+				if (jump && !(lives < 0)) {
 					advance(`Question-${index}`);
 					jump = false;
 				}
