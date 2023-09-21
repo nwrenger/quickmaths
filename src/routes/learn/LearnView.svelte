@@ -115,6 +115,20 @@
 					placeholder="Input answer..."
 					required
 					readonly={lives < 0}
+					on:keypress={(e) => {
+						if (e.key == "Enter")
+							if (quests[index + 1]) {
+								advance(`Question-${index + 1}`);
+							} else {
+								getAnswers(index);
+								if (validateAnswers()) {
+									correctDialog.open();
+								} else {
+									lives -= 1;
+								}
+								if (lives < -1) incorrectDialog.open();
+							}
+					}}
 				/>
 				<div class="valid-feedback">Looks good!</div>
 				<div class="invalid-feedback">
