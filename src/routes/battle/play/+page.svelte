@@ -9,7 +9,7 @@
 
 <section>
 	<BattleView
-		quests={[
+		answer={[
 			{ question: "1+1", answer: 2 },
 			{ question: "1-1", answer: 0 },
 			{ question: "1*1", answer: 1 }
