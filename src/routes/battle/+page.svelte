@@ -10,7 +10,8 @@
 	<h3 class="d-flex justify-content-center mb-3">Battle</h3>
 	<p class="text-center">
 		Get your friend to play one round of ultimate Quickmaths. You both have a buzzer which you need
-		to press when you now the answer. Now Start and beat you other Asses!
+		to press when you now the answer. For Player 1 Press S to answer and for Player 2 Press K to
+		answer. This won't work on mobile devices without Keyboards! Now Start and beat you other Asses!
 	</p>
 	<div class="text-center mb-3">
 		<a class="btn btn-primary" href="/battle/play">Start</a>

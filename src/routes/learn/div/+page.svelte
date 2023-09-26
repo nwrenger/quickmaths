@@ -8,7 +8,7 @@
 		for (let i = 1; i <= count; i++) {
 			let a = getRandomInt(0, 1000);
 			let b = getRandomInt(1, 1000);
-			while (a % b !== 0) {
+			while (a !== 0 && b !== 0 && a % b !== 0) {
 				a = getRandomInt(0, 1000);
 				b = getRandomInt(1, 1000);
 			}

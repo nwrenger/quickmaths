@@ -17,14 +17,15 @@
 </nav>
 
 <style>
-	.pic {
-		transition: transform 0.3s ease;
-	}
-
-	.pic:hover {
-		transform: scale(0.85);
-	}
-	.pic:active {
-		transform: scale(0.95, 0.9);
+	@media (hover: hover) {
+		.pic {
+			transition: transform 0.3s ease;
+		}
+		.pic:hover {
+			transform: scale(0.85);
+		}
+		.pic:active {
+			transform: scale(0.95, 0.9);
+		}
 	}
 </style>
