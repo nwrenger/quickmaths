@@ -3,6 +3,7 @@
 	<meta name="description" content="Start your journey with Quickmaths by selecting a mode." />
 </svelte:head>
 
+<!--  Welcome Container with game selection  -->
 <section class="container mt-2">
 	<div class="row">
 		<div class="col-lg-8 mx-auto text-center">

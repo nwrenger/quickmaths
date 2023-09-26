@@ -3,6 +3,7 @@
 	<meta name="description" content="Learn Calculating" />
 </svelte:head>
 
+<!--  Type Selection  -->
 <section>
 	<!-- svelte-ignore a11y-missing-content -->
 	<a class="btn btn-close" aria-label="Close" href="/" />

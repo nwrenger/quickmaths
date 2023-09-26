@@ -2,6 +2,7 @@
 	import LearnView, { Quests } from "../LearnView.svelte";
 	import { getRandomInt } from "../../../lib/utils";
 
+	// Generates random questions
 	function gen(count: number): Quests[] {
 		let quests: Quests[] = [];
 		for (let i = 1; i <= count; i++) {
@@ -22,6 +23,7 @@
 	<meta name="description" content="Learning Division" />
 </svelte:head>
 
+<!--  Giving the generated questions to the view component  -->
 <section>
 	<LearnView quests={gen(5)} />
 </section>

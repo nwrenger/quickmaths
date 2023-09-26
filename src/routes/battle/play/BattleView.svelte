@@ -9,7 +9,7 @@
 
 <script lang="ts">
 	import { Tab } from "bootstrap";
-	import Dialog from "../../components/Dialog.svelte";
+	import Dialog from "../../../components/Dialog.svelte";
 
 	export let quests: Quests[];
 
@@ -32,22 +32,14 @@
 	}
 
 	// validate all answers
-	function validateAnswers(): boolean {
-		let allValid = true;
-		let jump = true;
-		quests.forEach((quest, index) => {
-			if (quest.userInput !== quest.answer) {
-				if (jump && !(lives < 0)) {
-					advance(`Question-${index}`);
-					jump = false;
-				}
-				quest.isIncorrect = true;
-				allValid = false;
-			} else {
-				quest.isIncorrect = false;
-			}
-		});
-		return allValid;
+	function validateAnswer(quest: Quests): boolean {
+		if (quest.userInput !== quest.answer) {
+			quest.isIncorrect = true;
+			return true;
+		} else {
+			quest.isIncorrect = false;
+			return false;
+		}
 	}
 
 	// macro for jumping to the tabs
@@ -64,17 +56,11 @@
 	}
 </script>
 
-<!--  Lives Counter  -->
+<!--  Back Button  -->
 <div class="row align-items-center mx-auto">
 	<div class="col p-0">
 		<!-- svelte-ignore a11y-missing-content -->
-		<a class="btn btn-close" aria-label="Close" href="/learn" />
-	</div>
-	<div class="text-center p-0 d-flex col justify-content-end">
-		Lives:
-		<span class="badge text-bg-danger text-wrap ms-2">
-			{lives < 0 ? "No More lives! The answers will be Shown!" : lives}
-		</span>
+		<a class="btn btn-close" aria-label="Close" href="/battle" />
 	</div>
 </div>
 
@@ -89,7 +75,8 @@
 				data-bs-target="#Question-{index}"
 				type="button"
 				role="tab"
-				aria-controls="Question-{index}">Question {index + 1}</button
+				aria-controls="Question-{index}"
+				disabled>Question {index + 1}</button
 			>
 		</li>
 	{/each}
@@ -105,42 +92,34 @@
 			tabindex="0"
 		>
 			<div class="mb-3">
-				<label for="Question-{index}-input" class="form-label">What is {quest.question}?</label>
-				<input
-					type="number"
-					class="form-control {quest.isIncorrect
-						? 'is-invalid'
-						: quest.isIncorrect === false
-						? 'is-valid'
-						: ''}"
-					id="Question-{index}-input"
-					placeholder="Input answer..."
-					required
-					readonly={lives < 0}
-					on:keypress={(e) => {
-						if (e.key == "Enter")
-							if (quests[index + 1]) {
-								advance(`Question-${index + 1}`);
-							} else {
-								getAnswers(index);
-								if (validateAnswers()) {
-									correctDialog.open();
-								} else {
-									lives -= 1;
-								}
-								if (lives < -1) incorrectDialog.open();
-							}
-					}}
-				/>
-				<div class="valid-feedback">Looks good!</div>
-				<div class="invalid-feedback">
-					Wrong, The correct value would be {lives >= 0
-						? quest.userInput
-							? quest.answer > quest.userInput
-								? "Bigger"
-								: "Smaller"
-							: "Idk, Wrong Input"
-						: quest.answer}!
+				<p class="form-label">What is {quest.question}?</p>
+				<div class="btn-group" role="group" id="Question-{index}-input">
+					<input
+						type="radio"
+						class="btn-check"
+						name="btnradio"
+						id="answer1-{index}"
+						autocomplete="off"
+					/>
+					<label class="btn btn-outline-primary" for="answer1-{index}">{quest.answer}</label>
+
+					<input
+						type="radio"
+						class="btn-check"
+						name="btnradio"
+						id="answer2-{index}"
+						autocomplete="off"
+					/>
+					<label class="btn btn-outline-primary" for="answer2-{index}">{quest.answer}</label>
+
+					<input
+						type="radio"
+						class="btn-check"
+						name="btnradio"
+						id="answer3-{index}"
+						autocomplete="off"
+					/>
+					<label class="btn btn-outline-primary" for="answer3-{index}">{quest.answer}</label>
 				</div>
 			</div>
 			{#if quests[index + 1]}
@@ -155,7 +134,7 @@
 					class="btn btn-danger"
 					on:click={() => {
 						getAnswers(index);
-						if (validateAnswers()) {
+						if (validateAnswer(quest)) {
 							correctDialog.open();
 						} else {
 							lives -= 1;
@@ -174,7 +153,7 @@
 	<div class="text-center" slot="body">
 		<h3 class="text-success">Congratulations!</h3>
 		<p>You did it correct! Rating of your powers: {lives}/3</p>
-		<a class="btn btn-primary" href="/learn">Ok!</a>
+		<a class="btn btn-primary" href="/battle">Ok!</a>
 	</div>
 </Dialog>
 
@@ -184,6 +163,6 @@
 	<div class="text-center" slot="body">
 		<h3 class="text-danger">No more Lives!</h3>
 		<p>You couldn't do it..I know..</p>
-		<a class="btn btn-primary" href="/learn">Ok!</a>
+		<a class="btn btn-primary" href="/battle">Ok!</a>
 	</div>
 </Dialog>
