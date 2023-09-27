@@ -105,7 +105,7 @@
 		if (!answering && !finished)
 			if (e.key === "s") {
 				answering = "1";
-			} else if (e.key === "k") {
+			} else if (e.key === "l") {
 				answering = "2";
 			}
 	}}
@@ -209,12 +209,12 @@
 				<div class="row align-items-center mx-auto pt-5">
 					<div class="p-0 d-flex col justify-content-start">
 						<button class="btn btn-primary" type="button" on:click={() => (answering = "1")}
-							>Player 1 ("K" Key)</button
+							>Player 1 ("S" Key)</button
 						>
 					</div>
 					<div class="p-0 d-flex col justify-content-end">
 						<button class="btn btn-primary" type="button" on:click={() => (answering = "2")}
-							>Player 2 ("S" Key)</button
+							>Player 2 ("L" Key)</button
 						>
 					</div>
 				</div>
