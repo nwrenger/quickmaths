@@ -21,6 +21,8 @@
 					answer = a - b;
 					break;
 				case 2:
+					a = getRandomInt(0, 20);
+					b = getRandomInt(0, 20);
 					question = `${a} * ${b}`;
 					answer = a * b;
 					break;
@@ -48,5 +50,5 @@
 
 <!--  Giving the generated questions to the view component  -->
 <section>
-	<BattleView quests={gen(5)} />
+	<BattleView quests={gen(getRandomInt(3, 6))} />
 </section>

@@ -26,11 +26,13 @@
 	// using sveltes intervall func, just a macro
 	function increaseTime() {
 		const interval = setInterval(() => {
-			if (answering) {
-				time += 1;
-				if (time >= 100) {
-					clearInterval(interval);
-				}
+			if (!answering) {
+				clearInterval(interval);
+				return;
+			}
+			time += 1;
+			if (time >= 100) {
+				clearInterval(interval);
 			}
 		}, 100);
 	}
@@ -130,7 +132,12 @@
 	aria-valuemin={0}
 	aria-valuemax={100}
 >
-	<div class="progress-bar {time >= 100 ? 'bg-danger' : ''}" style="width: {time}%">
+	<div
+		class="progress-bar {time >= 100 ? 'bg-danger' : ''} {answering
+			? 'progress-bar-striped progress-bar-animated'
+			: ''}"
+		style="width: {time}%"
+	>
 		{time / 10}s
 	</div>
 </div>
@@ -198,8 +205,8 @@
 						finished = true;
 					}}>Log In</button
 				>
-			{:else if !finished}
-				<div class="row align-items-center mx-auto mb-2">
+			{:else if !finished && points1 + points2 < quests.length}
+				<div class="row align-items-center mx-auto pt-5">
 					<div class="p-0 d-flex col justify-content-start">
 						<button class="btn btn-primary" type="button" on:click={() => (answering = "1")}
 							>Player 1 ("K" Key)</button
@@ -212,7 +219,7 @@
 					</div>
 				</div>
 			{/if}
-			{#if finished}
+			{#if finished || points1 + points2 >= quests.length}
 				{#if quests[index + 1]}
 					<button
 						type="button"

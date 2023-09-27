@@ -21,5 +21,5 @@
 
 <!--  Giving the generated questions to the view component  -->
 <section>
-	<LearnView quests={gen(5)} />
+	<LearnView quests={gen(getRandomInt(3, 6))} />
 </section>
