@@ -10,7 +10,7 @@
 	<h3 class="d-flex justify-content-center mb-3">Battle</h3>
 	<p class="text-center">
 		Get your friend to play one round of ultimate Quickmaths. You both have a buzzer which you need
-		to press when you now the answer. For Player 1 Press S to answer and for Player 2 Press L to
+		to press when you know the answer. For Player 1 Press S to answer and for Player 2 Press L to
 		answer. This won't work great on mobile devices without Keyboards! Now Start and beat you other
 		Asses!
 	</p>
