@@ -46,6 +46,7 @@
 	<meta name="description" content="Playing with a Friend" />
 </svelte:head>
 
+<!--  Giving the generated questions to the view component  -->
 <section>
 	<BattleView quests={gen(5)} />
 </section>

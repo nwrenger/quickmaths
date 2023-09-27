@@ -18,14 +18,9 @@
 	let points1 = 0;
 	let points2 = 0;
 
-	$: if (time == 100) {
-		console.log("Didn't Answer in Time!");
-	}
-
+	// checking if answering reactively
 	$: if (answering) {
 		increaseTime();
-	} else {
-		time = 0;
 	}
 
 	// using sveltes intervall func, just a macro
@@ -64,6 +59,7 @@
 
 	// macro for jumping to the tabs
 	function advance(string: string) {
+		time = 0;
 		const triggerEl = document.querySelector(`#tab button[data-bs-target="#${string}"]`);
 		if (triggerEl) {
 			const instance = Tab.getOrCreateInstance(triggerEl);
@@ -101,6 +97,7 @@
 	</div>
 </div>
 
+<!--  Key Input Event Handler  -->
 <svelte:window
 	on:keydown={(e) => {
 		if (!answering && !finished)
@@ -111,15 +108,20 @@
 			}
 	}}
 />
-
+<!--  Player Overview  -->
 <div class="row align-items-center mx-auto mb-2">
 	<div class="text-center p-0 d-flex col justify-content-start">
-		<span class="badge text-bg-secondary">Player 1 (S): {points1}</span>
+		<span class="badge text-bg-{answering == '1' ? 'primary' : 'secondary'}"
+			>Player 1: {points1}</span
+		>
 	</div>
 	<div class="text-center p-0 d-flex col justify-content-end">
-		<span class="badge text-bg-secondary">Player 2 (K): {points2}</span>
+		<span class="badge text-bg-{answering == '2' ? 'primary' : 'secondary'}"
+			>Player 2: {points2}</span
+		>
 	</div>
 </div>
+<!--  Progress Bar  -->
 <div
 	class="progress"
 	role="progressbar"
@@ -128,7 +130,9 @@
 	aria-valuemin={0}
 	aria-valuemax={100}
 >
-	<div class="progress-bar" style="width: {time}%" />
+	<div class="progress-bar {time >= 100 ? 'bg-danger' : ''}" style="width: {time}%">
+		{time / 10}s
+	</div>
 </div>
 
 <!--  Qustions View and Answer Input  -->
@@ -170,7 +174,7 @@
 					id="answer-{index}"
 					placeholder="Input answer..."
 					required
-					disabled={!answering}
+					disabled={!answering || time >= 100}
 					on:keypress={(e) => {
 						if (e.key == "Enter") {
 							getAnswer(index);
@@ -194,6 +198,19 @@
 						finished = true;
 					}}>Log In</button
 				>
+			{:else if !finished}
+				<div class="row align-items-center mx-auto mb-2">
+					<div class="p-0 d-flex col justify-content-start">
+						<button class="btn btn-primary" type="button" on:click={() => (answering = "1")}
+							>Player 1 ("K" Key)</button
+						>
+					</div>
+					<div class="p-0 d-flex col justify-content-end">
+						<button class="btn btn-primary" type="button" on:click={() => (answering = "2")}
+							>Player 2 ("S" Key)</button
+						>
+					</div>
+				</div>
 			{/if}
 			{#if finished}
 				{#if quests[index + 1]}
