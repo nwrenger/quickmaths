@@ -1,5 +1,5 @@
 <svelte:head>
-	<title>Welcome to QuickMaths</title>
+	<title>Home</title>
 	<meta name="description" content="Start your journey with QuickMaths by selecting a mode." />
 </svelte:head>
 
