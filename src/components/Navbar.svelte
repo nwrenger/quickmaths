@@ -1,5 +1,5 @@
 <nav class="navbar bg-body-tertiary">
-	<div class="container-fluid">
+	<div class="container-xxl">
 		<a class="navbar-brand mb-0 h1" href="/">
 			<svg width="50" height="40" class="image-svg-svg primary pic"
 				><title>Quickmaths</title><svg
