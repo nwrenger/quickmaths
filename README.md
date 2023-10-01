@@ -35,4 +35,4 @@ QuickMaths is an open-source project, licensed under the MIT License. Further de
 
 ## Disclaimer
 
-This README document was generated with the assistance of ChatGPT. The rest of the project is completely self written, ChatGPT was only used as a Knowledge Database (-> as same as you use Google) not as a Programmer (in which it is really bad btw)!
+This README document was generated with the assistance of ChatGPT. The rest of the project is completely self written, ChatGPT was only used as a Knowledge Database (-> as same as you use Google) not as a Programmer!
