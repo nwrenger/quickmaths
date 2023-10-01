@@ -4,7 +4,7 @@ Welcome to QuickMaths, the website where mathematics is made easy and exciting! 
 
 ## Learn Mode
 
-Embark on a journey with Learn Mode to practice basic arithmetic at your own pace. Tackle problems like "What is 20 * 20?" and receive instant feedback, helping you to learn and improve quickly.
+Embark on a journey with Learn Mode to practice basic arithmetic at your own pace. Tackle problems like "What is 20 \* 20?" and receive instant feedback, helping you to learn and improve quickly.
 
 ## Battle Mode (Local Co-op)
 
@@ -15,6 +15,7 @@ Gear up for some friendly competition in Battle Mode! Engage in real-time, local
 Simply visit the [QuickMaths website](https://quickmaths-3173b.firebaseapp.com/) on your preferred web browser to begin your mathematical adventure. Switch effortlessly between Learn and Battle Mode and let the mathematical fun commence!
 
 ## Features
+
 - User-Friendly Interface
 - Practice Addition, Subtraction, Multiplication, and Division
 - Instant Feedback in Learn Mode
