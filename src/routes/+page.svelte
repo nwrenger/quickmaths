@@ -1,13 +1,13 @@
 <svelte:head>
-	<title>Welcome to Quickmaths</title>
-	<meta name="description" content="Start your journey with Quickmaths by selecting a mode." />
+	<title>Welcome to QuickMaths</title>
+	<meta name="description" content="Start your journey with QuickMaths by selecting a mode." />
 </svelte:head>
 
 <!--  Welcome Container with game selection  -->
 <section class="container mt-2">
 	<div class="row">
 		<div class="col-lg-8 mx-auto text-center">
-			<h3>Welcome to Quickmaths!</h3>
+			<h3>Welcome to QuickMaths!</h3>
 			<p class="mb-4">
 				Embark on a fun journey to master calculations. Whether you want to learn at your own pace
 				or challenge a friend, we've got you covered.

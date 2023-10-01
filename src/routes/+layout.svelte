@@ -4,6 +4,7 @@
 	import Navbar from "../components/Navbar.svelte";
 </script>
 
+<!--  General App Layout + Important Imports  -->
 <div class="app">
 	<Navbar />
 	<main>

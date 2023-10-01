@@ -8,6 +8,7 @@
 	}
 </script>
 
+<!--  Custom Dialog Component with Bootstrap Styling  -->
 <dialog class="custom-dialog" bind:this={dialog} on:close>
 	<div class="card">
 		<div class="card-header d-flex justify-content-between">

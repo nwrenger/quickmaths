@@ -1,3 +1,4 @@
+// Get random Integer in Range function, js doesn't have a native function for that...
 export function getRandomInt(min: number, max: number): number {
 	min = Math.ceil(min);
 	max = Math.floor(max);
