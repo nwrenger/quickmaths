@@ -11,6 +11,10 @@
 		for (let i = 1; i < count + 1; i++) {
 			let a = getRandomInt(2, 12 * difficulty);
 			let b = getRandomInt(2, 2 + difficulty);
+			while (quests.find((quest) => quest.answer == a ** b)) {
+				a = getRandomInt(2, 12 * difficulty);
+				b = getRandomInt(2, 2 * difficulty);
+			}
 			quests.push({ question: `${a} ^ ${b}`, answer: a ** b });
 		}
 		return quests;

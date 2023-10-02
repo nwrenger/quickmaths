@@ -13,21 +13,33 @@
 			let answer = 0;
 			switch (type) {
 				case 0:
+					while (quests.find((quest) => quest.answer == a + b)) {
+						a = getRandomInt(0, 300);
+						b = getRandomInt(0, 300);
+					}
 					question = `${a} + ${b}`;
 					answer = a + b;
 					break;
 				case 1:
+					while (quests.find((quest) => quest.answer == a - b)) {
+						a = getRandomInt(0, 300);
+						b = getRandomInt(0, 300);
+					}
 					question = `${a} - ${b}`;
 					answer = a - b;
 					break;
 				case 2:
 					a = getRandomInt(0, 20);
 					b = getRandomInt(0, 20);
+					while (quests.find((quest) => quest.answer == a * b)) {
+						a = getRandomInt(0, 20);
+						b = getRandomInt(0, 20);
+					}
 					question = `${a} * ${b}`;
 					answer = a * b;
 					break;
 				case 3:
-					while (a % b !== 0 || a / b === 1) {
+					while (a % b !== 0 || a / b === 1 || quests.find((quest) => quest.answer == a / b)) {
 						a = getRandomInt(2, 300);
 						b = getRandomInt(2, 300);
 					}
@@ -37,11 +49,18 @@
 				case 4:
 					a = getRandomInt(2, 12);
 					b = getRandomInt(2, 3);
+					while (quests.find((quest) => quest.answer == a ** b)) {
+						a = getRandomInt(2, 12);
+						b = getRandomInt(2, 3);
+					}
 					question = `${a} ^ ${b}`;
 					answer = a ** b;
 					break;
 				case 5:
 					a = getRandomInt(2, 12);
+					while (quests.find((quest) => quest.answer == Math.sqrt(a ** 2))) {
+						a = getRandomInt(2, 12);
+					}
 					question = `√${a ** 2}`;
 					answer = Math.sqrt(a ** 2);
 					break;

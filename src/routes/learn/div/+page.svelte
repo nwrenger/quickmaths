@@ -11,7 +11,7 @@
 		for (let i = 1; i <= count; i++) {
 			let a = getRandomInt(2, 500 * difficulty);
 			let b = getRandomInt(2, 500 * difficulty);
-			while (a % b !== 0 || a / b === 1) {
+			while (a % b !== 0 || a / b === 1 || quests.find((quest) => quest.answer == a / b)) {
 				a = getRandomInt(2, 500 * difficulty);
 				b = getRandomInt(2, 500 * difficulty);
 			}
