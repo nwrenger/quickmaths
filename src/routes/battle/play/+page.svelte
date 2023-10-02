@@ -8,7 +8,7 @@
 		for (let i = 1; i < count + 1; i++) {
 			let a = getRandomInt(0, 300);
 			let b = getRandomInt(0, 300);
-			let type = getRandomInt(0, 3);
+			let type = getRandomInt(0, 5);
 			let question = "";
 			let answer = 0;
 			switch (type) {
@@ -34,6 +34,17 @@
 					question = `${a} / ${b}`;
 					answer = a / b;
 					break;
+				case 4:
+					a = getRandomInt(0, 12);
+					b = getRandomInt(0, 3);
+					question = `${a} ^ ${b}`;
+					answer = a ** b;
+					break;
+				case 5:
+					a = getRandomInt(0, 12);
+					question = `√${a ** 2}`;
+					answer = Math.sqrt(a ** 2);
+					break;
 				default:
 					break;
 			}
@@ -50,5 +61,5 @@
 
 <!--  Giving the generated questions to the view component  -->
 <section>
-	<BattleView quests={gen(getRandomInt(3, 6))} />
+	<BattleView quests={gen(getRandomInt(4, 8))} />
 </section>

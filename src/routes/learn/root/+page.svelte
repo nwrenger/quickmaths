@@ -9,17 +9,16 @@
 	function gen(count: number): Quests[] {
 		let quests: Quests[] = [];
 		for (let i = 1; i < count + 1; i++) {
-			let a = getRandomInt(0, 100 * difficulty);
-			let b = getRandomInt(0, 20 * difficulty);
-			quests.push({ question: `${a} * ${b}`, answer: a * b });
+			let a = getRandomInt(0, 12 * difficulty);
+			quests.push({ question: `√${a ** 2}`, answer: Math.sqrt(a ** 2) });
 		}
 		return quests;
 	}
 </script>
 
 <svelte:head>
-	<title>Multiplication</title>
-	<meta name="description" content="Learning Multiplication" />
+	<title>Square Root</title>
+	<meta name="description" content="Learning Square Root" />
 </svelte:head>
 
 <!--  Giving the generated questions to the view component  -->

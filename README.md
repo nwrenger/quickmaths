@@ -1,6 +1,6 @@
 # QuickMaths
 
-Welcome to QuickMaths, the website where mathematics is made easy and exciting! QuickMaths is committed to enhancing your basic arithmetic skills — addition, subtraction, multiplication, and division — while providing a platform to challenge friends and family locally.
+Welcome to QuickMaths, the website where mathematics is made easy and exciting! QuickMaths is committed to enhancing your basic arithmetic skills — addition, subtraction, multiplication, division, power and square root — while providing a platform to challenge friends and family locally.
 
 ## Learn Mode
 
@@ -17,7 +17,7 @@ Simply visit the [QuickMaths website](https://quickmaths-3173b.firebaseapp.com/)
 ## Features
 
 - User-Friendly Interface
-- Practice Addition, Subtraction, Multiplication, and Division
+- Practice Addition, Subtraction, Multiplication, Division, Power and Square Root at you own Pace with Difficulty Selection
 - Instant Feedback in Learn Mode
 - Real-Time, Local Co-op Math Battles
 
@@ -25,6 +25,8 @@ Simply visit the [QuickMaths website](https://quickmaths-3173b.firebaseapp.com/)
 
 - [x] Learn Mode
 - [x] Battle Mode
+- [x] Add Question Types: Power, Square Root
+- [x] Difficulty Slider
 
 ## Contributing
 

@@ -12,12 +12,13 @@
 	import Dialog from "../../components/Dialog.svelte";
 
 	export let quests: Quests[];
+	export let difficulty: number;
 
 	let correctDialog: Dialog;
 	let incorrectDialog: Dialog;
 
 	// total lives
-	let lives: number = 3;
+	let lives: number = 3 - (difficulty > 2 ? 1 : 0);
 
 	// get all answers from all fields
 	function getAnswers(end: number): number[] {
@@ -68,7 +69,7 @@
 <div class="row align-items-center mx-auto">
 	<div class="col p-0">
 		<!-- svelte-ignore a11y-missing-content -->
-		<a class="btn btn-close" aria-label="Close" href="/learn" />
+		<a class="btn btn-close" aria-label="Close" href="/learn?dif={difficulty}" />
 	</div>
 	<div class="text-center p-0 d-flex col justify-content-end">
 		Lives:
