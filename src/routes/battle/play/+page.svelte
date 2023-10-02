@@ -27,9 +27,9 @@
 					answer = a * b;
 					break;
 				case 3:
-					while (a !== 0 && b !== 0 && a % b !== 0) {
-						a = getRandomInt(0, 300);
-						b = getRandomInt(1, 300);
+					while (a % b !== 0 || a / b === 1) {
+						a = getRandomInt(2, 300);
+						b = getRandomInt(2, 300);
 					}
 					question = `${a} / ${b}`;
 					answer = a / b;
