@@ -48,27 +48,30 @@
 		bind:value={difficulty}
 	/>
 	<div class="row pb-3 mx-auto m-0">
-		<div class="col-sm-6 mb-3 mb-sm-0 d-grid gap-3">
+		<div class="col-sm-6 mb-3 mb-sm-0 d-grid gap-3 p-0 pe-sm-2">
 			<a class="btn btn-primary" type="button" href="/learn/add?dif={difficulty}">Addition</a>
 		</div>
-		<div class="col-sm-6 d-grid gap-3">
+		<div class="col-sm-6 d-grid gap-3 p-0 p-0 ps-sm-2">
 			<a class="btn btn-primary" type="button" href="/learn/sub?dif={difficulty}">Subtraction</a>
 		</div>
 	</div>
 	<div class="row pb-3 mx-auto">
-		<div class="col-sm-6 mb-3 mb-sm-0 d-grid gap-3">
+		<div class="col-sm-6 mb-3 mb-sm-0 d-grid gap-3 p-0 pe-sm-2">
 			<a class="btn btn-primary" type="button" href="/learn/mul?dif={difficulty}">Multiplication</a>
 		</div>
-		<div class="col-sm-6 d-grid gap-3">
+		<div class="col-sm-6 d-grid gap-3 p-0 ps-sm-2">
 			<a class="btn btn-primary" type="button" href="/learn/div?dif={difficulty}">Division</a>
 		</div>
 	</div>
 	<div class="row mx-auto">
-		<div class="col-sm-6 mb-3 mb-sm-0 d-grid gap-3">
+		<div class="col-sm-6 mb-3 mb-sm-0 d-grid gap-3 p-0 pe-sm-2">
 			<a class="btn btn-primary" type="button" href="/learn/pow?dif={difficulty}">Power</a>
 		</div>
-		<div class="col-sm-6 d-grid gap-3">
+		<div class="col-sm-6 d-grid gap-3 p-0 ps-sm-2">
 			<a class="btn btn-primary" type="button" href="/learn/root?dif={difficulty}">Square Root</a>
 		</div>
 	</div>
 </section>
+
+<style>
+</style>
