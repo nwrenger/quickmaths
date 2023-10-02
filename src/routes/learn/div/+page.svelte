@@ -6,11 +6,11 @@
 	function gen(count: number): Quests[] {
 		let quests: Quests[] = [];
 		for (let i = 1; i <= count; i++) {
-			let a = getRandomInt(0, 1000);
-			let b = getRandomInt(1, 1000);
-			while (a !== 0 && b !== 0 && a % b !== 0) {
-				a = getRandomInt(0, 1000);
-				b = getRandomInt(1, 1000);
+			let a = getRandomInt(2, 1000);
+			let b = getRandomInt(2, 1000);
+			while (a % b !== 0 || a / b === 1) {
+				a = getRandomInt(2, 1000);
+				b = getRandomInt(2, 1000);
 			}
 			quests.push({ question: `${a} / ${b}`, answer: a / b });
 		}
