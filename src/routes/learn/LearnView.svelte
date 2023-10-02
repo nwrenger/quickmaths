@@ -175,7 +175,7 @@
 	<div class="text-center" slot="body">
 		<h3 class="text-success">Congratulations!</h3>
 		<p>You did it correct! Rating of your powers: {lives}/3</p>
-		<a class="btn btn-primary" href="/learn">Ok!</a>
+		<a class="btn btn-primary" href="/learn?dif={difficulty}">Ok!</a>
 	</div>
 </Dialog>
 
@@ -185,6 +185,6 @@
 	<div class="text-center" slot="body">
 		<h3 class="text-danger">No more Lives!</h3>
 		<p>You couldn't do it..I know..</p>
-		<a class="btn btn-primary" href="/learn">Ok!</a>
+		<a class="btn btn-primary" href="/learn?dif={difficulty}">Ok!</a>
 	</div>
 </Dialog>

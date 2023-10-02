@@ -34,9 +34,9 @@
 
 	<h3 class="d-flex justify-content-center mb-3">Learn</h3>
 	<p class="text-center">
-		Welcome to the Learn Mode! You have in total 3 Lives and therefore 3 tries. On wrong answers
-		you'll get hints! Select below which kind of Calculating you want to improve and what difficulty
-		you want to exceed in.
+		Welcome to the Learn Mode! You have in total {3 - (difficulty > 2 ? 1 : 0)} Lives and therefore {4 -
+			(difficulty > 2 ? 1 : 0)} tries. On wrong answers you'll get hints! Select below which kind of
+		Calculating you want to improve and what difficulty you want to exceed in.
 	</p>
 	<label for="difficulty-range" class="form-label">Difficulty: {getDif(difficulty)}</label>
 	<input

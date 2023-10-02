@@ -4,3 +4,19 @@ export function getRandomInt(min: number, max: number): number {
 	max = Math.floor(max);
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+// gives back the question count with a specified difficulty
+export function difCount(dif: number): number {
+	switch (dif) {
+		case 1:
+			return 4;
+		case 2:
+			return 4;
+		case 3:
+			return 5;
+		case 4:
+			return 6;
+		default:
+			return 4;
+	}
+}

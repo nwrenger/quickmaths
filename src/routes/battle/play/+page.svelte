@@ -35,13 +35,13 @@
 					answer = a / b;
 					break;
 				case 4:
-					a = getRandomInt(0, 12);
-					b = getRandomInt(0, 3);
+					a = getRandomInt(2, 12);
+					b = getRandomInt(2, 3);
 					question = `${a} ^ ${b}`;
 					answer = a ** b;
 					break;
 				case 5:
-					a = getRandomInt(0, 12);
+					a = getRandomInt(2, 12);
 					question = `√${a ** 2}`;
 					answer = Math.sqrt(a ** 2);
 					break;
@@ -61,5 +61,5 @@
 
 <!--  Giving the generated questions to the view component  -->
 <section>
-	<BattleView quests={gen(getRandomInt(4, 8))} />
+	<BattleView quests={gen(getRandomInt(5, 7))} />
 </section>
