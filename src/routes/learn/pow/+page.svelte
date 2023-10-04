@@ -12,8 +12,8 @@
 			let a = getRandomInt(2, 12 * difficulty);
 			let b = getRandomInt(2, 2 + difficulty);
 			while (quests.find((quest) => quest.answer == a ** b)) {
-				a = getRandomInt(2, 12 * difficulty);
-				b = getRandomInt(2, 2 * difficulty);
+				a = getRandomInt(2 * difficulty, 12 * difficulty);
+				b = getRandomInt(2, difficulty > 2 ? 3 : 2);
 			}
 			quests.push({ question: `${a} ^ ${b}`, answer: a ** b });
 		}
