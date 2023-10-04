@@ -11,7 +11,7 @@
 		for (let i = 1; i < count + 1; i++) {
 			let a = getRandomInt(2 * difficulty, 12 * difficulty);
 			while (quests.find((quest) => quest.answer == Math.sqrt(a ** 2))) {
-				a = getRandomInt(2, 12 * difficulty);
+				a = getRandomInt(2 * difficulty, 12 * difficulty);
 			}
 			quests.push({ question: `√${a ** 2}`, answer: Math.sqrt(a ** 2) });
 		}
