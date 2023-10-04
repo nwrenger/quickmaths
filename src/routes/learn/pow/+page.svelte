@@ -9,8 +9,8 @@
 	function gen(count: number): Quests[] {
 		let quests: Quests[] = [];
 		for (let i = 1; i < count + 1; i++) {
-			let a = getRandomInt(2, 12 * difficulty);
-			let b = getRandomInt(2, 2 + difficulty);
+			let a = getRandomInt(2 * difficulty, 12 * difficulty);
+			let b = getRandomInt(2, difficulty > 2 ? 3 : 2);
 			while (quests.find((quest) => quest.answer == a ** b)) {
 				a = getRandomInt(2 * difficulty, 12 * difficulty);
 				b = getRandomInt(2, difficulty > 2 ? 3 : 2);
