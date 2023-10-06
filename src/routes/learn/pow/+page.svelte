@@ -10,10 +10,10 @@
 		let quests: Quests[] = [];
 		for (let i = 1; i < count + 1; i++) {
 			let a = getRandomInt(2 * difficulty, 12 * difficulty);
-			let b = getRandomInt(2, difficulty > 2 ? 3 : 2);
+			let b = getRandomInt(2, difficulty > 1 ? (difficulty > 3 ? 4 : 3) : 2);
 			while (quests.find((quest) => quest.answer == a ** b)) {
 				a = getRandomInt(2 * difficulty, 12 * difficulty);
-				b = getRandomInt(2, difficulty > 2 ? 3 : 2);
+				b = getRandomInt(2, difficulty > 1 ? (difficulty > 3 ? 4 : 3) : 2);
 			}
 			quests.push({ question: `${a} ^ ${b}`, answer: a ** b });
 		}
