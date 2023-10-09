@@ -12,7 +12,7 @@ Gear up for some friendly competition in Battle Mode! Engage in real-time, local
 
 ## Getting Started
 
-Simply visit the [QuickMaths website](https://quickmaths-3173b.firebaseapp.com/) on your preferred web browser to begin your mathematical adventure. Switch effortlessly between Learn and Battle Mode and let the mathematical fun commence!
+Simply visit the [QuickMaths website](https://quickmaths-3173b.web.com/) on your preferred web browser to begin your mathematical adventure. Switch effortlessly between Learn and Battle Mode and let the mathematical fun commence!
 
 ## Features
 
