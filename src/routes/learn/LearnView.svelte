@@ -18,7 +18,7 @@
 	let incorrectDialog: Dialog;
 
 	// total lives
-	let lives: number = difficulty > 2 ? 3 : 2;
+	let lives: number = difficulty > 2 ? 2 : 3;
 
 	// get all answers from all fields
 	function getAnswers(end: number): number[] {
@@ -174,7 +174,7 @@
 	<span slot="header"> Info </span>
 	<div class="text-center" slot="body">
 		<h3 class="text-success">Congratulations!</h3>
-		<p>You did it correct! Rating of your powers: {lives}/{difficulty > 2 ? 3 : 2}</p>
+		<p>You did it correct! Rating of your powers: {lives}/{difficulty > 2 ? 2 : 3}</p>
 		<a class="btn btn-primary" href="/learn?dif={difficulty}">Ok!</a>
 	</div>
 </Dialog>
