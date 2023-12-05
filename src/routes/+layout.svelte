@@ -16,8 +16,10 @@
 
 <Modal />
 
+<!-- App Shell -->
 <AppShell>
 	<svelte:fragment slot="header">
+		<!-- App Bar -->
 		<AppBar class="shadow-2xl">
 			<svelte:fragment slot="lead">
 				<a href="/">
@@ -44,8 +46,8 @@
 					><i class="fa-brands fa-github text-lg"></i>
 				</a>
 			</svelte:fragment>
-		</AppBar></svelte:fragment
-	>
-	<!-- Router Slot -->
+		</AppBar>
+	</svelte:fragment>
+	<!-- Page Route Content -->
 	<slot />
 </AppShell>
