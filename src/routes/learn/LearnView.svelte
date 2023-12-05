@@ -1,35 +1,32 @@
 <script lang="ts" context="module">
-	export class Quests {
-		question!: string;
-		answer!: number;
+	export interface Quests {
+		question: string;
+		answer: number;
 		isIncorrect?: boolean;
 		userInput?: number;
 	}
 </script>
 
 <script lang="ts">
-	import { Tab } from "bootstrap";
-	import Dialog from "../../components/Dialog.svelte";
+	import { goto } from '$app/navigation';
+	import { Step, Stepper, type ModalSettings, focusTrap } from '@skeletonlabs/skeleton';
+	import { getModalStore } from '@skeletonlabs/skeleton';
+	const modalStore = getModalStore();
 
 	export let quests: Quests[];
 	export let difficulty: number;
+	export let type: string;
 
-	let correctDialog: Dialog;
-	let incorrectDialog: Dialog;
-
-	// total lives
 	let lives: number = difficulty > 2 ? 2 : 3;
+	let userInput: number[] = [];
+	let state = {};
+	let start = 0;
 
-	// get all answers from all fields
-	function getAnswers(end: number): number[] {
-		let ret: number[] = [];
-		for (let i = 0; i < end + 1; i++) {
-			let element = document.getElementById(`Question-${i}-input`) as HTMLInputElement;
-			if (element) {
-				quests[i].userInput = parseInt(element.value);
-			}
+	// update all answers from all fields
+	function updateAnswers() {
+		for (let i = 0; i < userInput.length; i++) {
+			quests[i].userInput = userInput[i];
 		}
-		return ret;
 	}
 
 	// validate all answers
@@ -39,8 +36,13 @@
 		quests.forEach((quest, index) => {
 			if (quest.userInput !== quest.answer) {
 				if (jump && !(lives < 0)) {
-					advance(`Question-${index}`);
 					jump = false;
+					if (lives > 0) {
+						start = index;
+					} else {
+						start = quests.length - 1;
+					}
+					state = {};
 				}
 				quest.isIncorrect = true;
 				allValid = false;
@@ -51,140 +53,134 @@
 		return allValid;
 	}
 
-	// macro for jumping to the tabs
-	function advance(string: string) {
-		const triggerEl = document.querySelector(`#tab button[data-bs-target="#${string}"]`);
-		if (triggerEl) {
-			const instance = Tab.getOrCreateInstance(triggerEl);
-			if (instance) {
-				instance.show();
+	//end function
+	function end() {
+		updateAnswers();
+		if (validateAnswers()) {
+			correct();
+		} else {
+			lives -= 1;
+			if (lives <= -1) {
+				incorrect();
 			} else {
-				return "wtf";
+				warn();
 			}
 		}
 	}
+
+	// macro for jumping to the tabs
+	function advance() {
+		start += 1;
+		state = {};
+	}
+
+	// warn modal
+	function warn() {
+		const modal: ModalSettings = {
+			type: 'alert',
+			// Data
+			title: 'Retry!',
+			body: `You did ${
+				quests.filter((obj) => obj.isIncorrect).length
+			} wrong! Please review your answers and try again!`
+		};
+		modalStore.trigger(modal);
+	}
+
+	// incorrect modal
+	function incorrect() {
+		const modal: ModalSettings = {
+			type: 'confirm',
+			// Data
+			title: 'No more Lives!',
+			body: "I know...You couldn't do it!",
+			response: (r: boolean) => {
+				if (r) goto('/learn');
+			}
+		};
+		modalStore.trigger(modal);
+	}
+
+	// incorrect modal
+	function correct() {
+		const modal: ModalSettings = {
+			type: 'confirm',
+			// Data
+			title: 'Congratulations!',
+			body: `You did it correct! Rating of your powers: ${lives}/${difficulty > 2 ? 2 : 3}`,
+			response: (r: boolean) => {
+				if (r) goto(`/learn?dif=${difficulty}&type=${type}`);
+			}
+		};
+		modalStore.trigger(modal);
+	}
 </script>
 
-<!--  Lives Counter  -->
-<div class="row align-items-center mx-auto">
-	<div class="col p-0">
-		<!-- svelte-ignore a11y-missing-content -->
-		<a class="btn btn-close" aria-label="Close" href="/learn?dif={difficulty}" />
-	</div>
-	<div class="text-center p-0 d-flex col justify-content-end">
-		Lives:
-		<span class="badge text-bg-danger text-wrap ms-2">
-			{lives < 0 ? "No More lives! The answers will be Shown!" : lives}
-		</span>
+<!--  Questions View and Answer Input  -->
+<div class="container h-full mx-auto flex justify-center items-center">
+	<div class="space-y-4 lg:w-2/3 w-11/12 pt-4 pb-4">
+		{#key state}
+			<Stepper stepTerm="Question" {start} on:complete={end}>
+				{#each quests as quest, index}
+					<Step>
+						<svelte:fragment slot="navigation">
+							{#if index == 0}
+								<a class="btn variant-ghost" href="/learn?dif={difficulty}&type={type}">Cancel</a>
+							{/if}
+						</svelte:fragment>
+						<svelte:fragment slot="header"
+							><div class="flex items-center justify-between">
+								<h3 class="h3">What is {quest.question}?</h3>
+								<!--  Lives Counter  -->
+								<div class="flex items-center">
+									<h5 class="h5 mr-2">Lives:</h5>
+									<span class="badge variant-filled{lives < 0 ? '-surface' : ''}"
+										>{lives > 0 ? lives : 0}</span
+									>
+								</div>
+							</div>
+						</svelte:fragment>
+						<form use:focusTrap={true}>
+							<input
+								bind:value={userInput[index]}
+								class="input {quest.isIncorrect != undefined
+									? quest.isIncorrect
+										? 'input-error'
+										: 'input-success'
+									: ''}"
+								type="number"
+								placeholder="Input answer..."
+								required
+								use:focusTrap={true}
+								disabled={lives < 0}
+								on:keypress={(e) => {
+									if (e.key == 'Enter')
+										if (quests[index + 1]) {
+											advance();
+										} else {
+											end();
+										}
+								}}
+							/>
+						</form>
+						{#if quest.isIncorrect != undefined}
+							{#if quest.isIncorrect}
+								<p class="text-error-500 italic text-center">
+									Wrong, The correct value would be {lives >= 0
+										? quest.userInput
+											? quest.answer > quest.userInput
+												? 'Bigger'
+												: 'Smaller'
+											: 'Idk, Wrong Input'
+										: quest.answer}!
+								</p>
+							{:else}
+								<p class="text-success-500 italic text-center">Looks good!</p>
+							{/if}
+						{/if}
+					</Step>
+				{/each}
+			</Stepper>
+		{/key}
 	</div>
 </div>
-
-<!--  Qustions View and Answer Input  -->
-<ul class="nav nav-pills mb-3 mt-2" id="tab" role="tablist">
-	{#each quests as _quest, index}
-		<li class="nav-item" role="presentation">
-			<button
-				class="nav-link {index === 0 ? 'active' : ''}"
-				id="Question-{index}-tab"
-				data-bs-toggle="pill"
-				data-bs-target="#Question-{index}"
-				type="button"
-				role="tab"
-				aria-controls="Question-{index}">Question {index + 1}</button
-			>
-		</li>
-	{/each}
-	<li class="nav-item" role="presentation" />
-</ul>
-<div class="tab-content" id="pills-tabContent">
-	{#each quests as quest, index}
-		<div
-			class="tab-pane fade {index === 0 ? 'show active' : ''}"
-			id="Question-{index}"
-			role="tabpanel"
-			aria-labelledby="Question-{index}-tab"
-			tabindex="0"
-		>
-			<div class="mb-3">
-				<label for="Question-{index}-input" class="form-label">What is {quest.question}?</label>
-				<input
-					type="number"
-					class="form-control {quest.isIncorrect
-						? 'is-invalid'
-						: quest.isIncorrect === false
-						? 'is-valid'
-						: ''}"
-					id="Question-{index}-input"
-					placeholder="Input answer..."
-					required
-					readonly={lives < 0}
-					on:keypress={(e) => {
-						if (e.key == "Enter")
-							if (quests[index + 1]) {
-								advance(`Question-${index + 1}`);
-							} else {
-								getAnswers(index);
-								if (validateAnswers()) {
-									correctDialog.open();
-								} else {
-									lives -= 1;
-								}
-								if (lives < -1) incorrectDialog.open();
-							}
-					}}
-				/>
-				<div class="valid-feedback">Looks good!</div>
-				<div class="invalid-feedback">
-					Wrong, The correct value would be {lives >= 0
-						? quest.userInput
-							? quest.answer > quest.userInput
-								? "Bigger"
-								: "Smaller"
-							: "Idk, Wrong Input"
-						: quest.answer}!
-				</div>
-			</div>
-			{#if quests[index + 1]}
-				<button
-					type="button"
-					class="btn btn-primary"
-					on:click={() => advance(`Question-${index + 1}`)}>Next</button
-				>
-			{:else}
-				<button
-					type="button"
-					class="btn btn-danger"
-					on:click={() => {
-						getAnswers(index);
-						if (validateAnswers()) {
-							correctDialog.open();
-						} else {
-							lives -= 1;
-						}
-						if (lives < -1) incorrectDialog.open();
-					}}>Finish</button
-				>
-			{/if}
-		</div>
-	{/each}
-</div>
-
-<!--  Dialog for winning  -->
-<Dialog bind:this={correctDialog}>
-	<span slot="header"> Info </span>
-	<div class="text-center" slot="body">
-		<h3 class="text-success">Congratulations!</h3>
-		<p>You did it correct! Rating of your powers: {lives}/{difficulty > 2 ? 2 : 3}</p>
-		<a class="btn btn-primary" href="/learn?dif={difficulty}">Ok!</a>
-	</div>
-</Dialog>
-
-<!--  Dialog for losing  -->
-<Dialog bind:this={incorrectDialog}>
-	<span slot="header"> Info </span>
-	<div class="text-center" slot="body">
-		<h3 class="text-danger">No more Lives!</h3>
-		<p>You couldn't do it..I know..</p>
-		<a class="btn btn-primary" href="/learn?dif={difficulty}">Ok!</a>
-	</div>
-</Dialog>

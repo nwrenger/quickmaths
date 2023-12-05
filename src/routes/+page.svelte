@@ -1,32 +1,18 @@
 <svelte:head>
-	<title>Home</title>
+	<title>Quickmaths v2</title>
 	<meta name="description" content="Start your journey with QuickMaths by selecting a mode." />
 </svelte:head>
 
 <!--  Welcome Container with game selection  -->
-<section class="container mt-2">
-	<div class="row">
-		<div class="col-lg-8 mx-auto text-center">
-			<h3>Welcome to QuickMaths!</h3>
-			<p class="mb-4">
-				Embark on a fun journey to master calculations. Whether you want to learn at your own pace
-				or challenge a friend, we've got you covered.
-			</p>
-		</div>
+<div class="container h-full mx-auto flex justify-center items-center">
+	<div class="space-y-5 flex flex-col items-center text-center lg:w-2/3 w-11/12 pt-4 pb-4">
+		<h2 class="h2">Welcome to QuickMaths v2!</h2>
+		<p>
+			Embark on a fun journey to master calculations. Whether you want to learn at your own pace or
+			challenge a friend, we've got you covered.
+		</p>
+		<h3 class="h3">Select Your Mode:</h3>
+		<a href="/learn" class="btn variant-filled">Learn</a>
+		<a href="/battle" class="btn variant-filled">Local Co-op</a>
 	</div>
-
-	<div class="row">
-		<div class="text-center mb-3">
-			<h4>Select Your Mode</h4>
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="text-center mb-3">
-			<a class="btn btn-primary" href="/learn">Learn</a>
-		</div>
-		<div class="text-center">
-			<a class="btn btn-primary" href="/battle">Local Co-op</a>
-		</div>
-	</div>
-</section>
+</div>

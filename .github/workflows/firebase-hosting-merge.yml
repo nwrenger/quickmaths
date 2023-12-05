@@ -28,6 +28,6 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
-          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_QUICKMATHS_3173B }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_QUICKMATHS_V2 }}"
           channelId: live
-          projectId: quickmaths-3173b
+          projectId: quickmaths-v2

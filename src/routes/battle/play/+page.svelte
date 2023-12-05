@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { getRandomInt } from "$lib/utils";
-	import BattleView, { Answer } from "./BattleView.svelte";
+	import { getRandomInt } from '$lib/utils';
+	import BattleView, { type Answer } from './BattleView.svelte';
 
 	// Generates random questions
 	function gen(count: number): Answer[] {
@@ -9,7 +9,7 @@
 			let a = getRandomInt(0, 300);
 			let b = getRandomInt(0, 300);
 			let type = getRandomInt(0, 5);
-			let question = "";
+			let question = '';
 			let answer = 0;
 			switch (type) {
 				case 0:

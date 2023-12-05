@@ -1,25 +1,12 @@
 <script lang="ts">
-	import { page } from "$app/stores";
+	import { page } from '$app/stores';
+	import { RadioGroup, RadioItem } from '@skeletonlabs/skeleton';
 
-	let difficulty: number;
+	let difficulty: number = 2;
+	let type: string = 'add';
 
-	difficulty = parseInt($page.url.searchParams.get("dif") || "2") || 2;
-
-	// gets a Difficulty Name by a Number
-	function getDif(number: number): string {
-		switch (number) {
-			case 1:
-				return "Easy";
-			case 2:
-				return "Medium";
-			case 3:
-				return "Hard";
-			case 4:
-				return "Unbeatable";
-			default:
-				return "???";
-		}
-	}
+	difficulty = parseInt($page.url.searchParams.get('dif') || '2') || 2;
+	type = $page.url.searchParams.get('type') || 'add';
 </script>
 
 <svelte:head>
@@ -28,50 +15,41 @@
 </svelte:head>
 
 <!--  Type Selection  -->
-<section class="p-0">
-	<!-- svelte-ignore a11y-missing-content -->
-	<a class="btn btn-close" aria-label="Close" href="/" />
+<div class="container h-full mx-auto flex justify-center items-center">
+	<div class="space-y-5 flex flex-col items-center text-center lg:w-2/3 w-11/12 pt-4 pb-4">
+		<h2 class="h2">Learn</h2>
+		<p>
+			Welcome to the Learn Mode! You have in total {3 - (difficulty > 2 ? 1 : 0)} Lives and therefore
+			{4 - (difficulty > 2 ? 1 : 0)} tries. On wrong answers you'll get hints! Select below what difficulty
+			you want to exceed in and which kind of Calculating you want to improve.
+		</p>
+		<h3 class="h3">Difficulty:</h3>
+		<RadioGroup
+			rounded="rounded-container-token md:rounded-token"
+			display="!md:flex md:inline-flex"
+		>
+			<RadioItem bind:group={difficulty} name="justify" value={1}>Easy</RadioItem>
+			<RadioItem bind:group={difficulty} name="justify" value={2}>Medium</RadioItem>
+			<RadioItem bind:group={difficulty} name="justify" value={3}>Hard</RadioItem>
+			<RadioItem bind:group={difficulty} name="justify" value={4}>Unbeatable</RadioItem>
+		</RadioGroup>
 
-	<h3 class="d-flex justify-content-center mb-3">Learn</h3>
-	<p class="text-center">
-		Welcome to the Learn Mode! You have in total {3 - (difficulty > 2 ? 1 : 0)} Lives and therefore {4 -
-			(difficulty > 2 ? 1 : 0)} tries. On wrong answers you'll get hints! Select below which kind of
-		Calculating you want to improve and what difficulty you want to exceed in.
-	</p>
-	<label for="difficulty-range" class="form-label">Difficulty: {getDif(difficulty)}</label>
-	<input
-		type="range"
-		class="form-range"
-		min="1"
-		max="4"
-		id="difficulty-range"
-		bind:value={difficulty}
-	/>
-	<div class="row pb-3 mx-auto m-0">
-		<div class="col-sm-6 mb-3 mb-sm-0 d-grid gap-3 p-0 pe-sm-2">
-			<a class="btn btn-primary" type="button" href="/learn/add?dif={difficulty}">Addition</a>
-		</div>
-		<div class="col-sm-6 d-grid gap-3 p-0 p-0 ps-sm-2">
-			<a class="btn btn-primary" type="button" href="/learn/sub?dif={difficulty}">Subtraction</a>
-		</div>
-	</div>
-	<div class="row pb-3 mx-auto">
-		<div class="col-sm-6 mb-3 mb-sm-0 d-grid gap-3 p-0 pe-sm-2">
-			<a class="btn btn-primary" type="button" href="/learn/mul?dif={difficulty}">Multiplication</a>
-		</div>
-		<div class="col-sm-6 d-grid gap-3 p-0 ps-sm-2">
-			<a class="btn btn-primary" type="button" href="/learn/div?dif={difficulty}">Division</a>
-		</div>
-	</div>
-	<div class="row mx-auto">
-		<div class="col-sm-6 mb-3 mb-sm-0 d-grid gap-3 p-0 pe-sm-2">
-			<a class="btn btn-primary" type="button" href="/learn/pow?dif={difficulty}">Power</a>
-		</div>
-		<div class="col-sm-6 d-grid gap-3 p-0 ps-sm-2">
-			<a class="btn btn-primary" type="button" href="/learn/root?dif={difficulty}">Square Root</a>
-		</div>
-	</div>
-</section>
+		<h3 class="h3">Mode:</h3>
+		<RadioGroup
+			rounded="rounded-container-token md:rounded-token"
+			display="!md:flex md:inline-flex"
+		>
+			<RadioItem bind:group={type} name="justify" value={'add'}>Addition</RadioItem>
+			<RadioItem bind:group={type} name="justify" value={'sub'}>Subtraction</RadioItem>
+			<RadioItem bind:group={type} name="justify" value={'mul'}>Multiplication</RadioItem>
+			<RadioItem bind:group={type} name="justify" value={'div'}>Division</RadioItem>
+			<RadioItem bind:group={type} name="justify" value={'pow'}>Power</RadioItem>
+			<RadioItem bind:group={type} name="justify" value={'root'}>Square Root</RadioItem>
+		</RadioGroup>
 
-<style>
-</style>
+		<div class="flex">
+			<a href="/" class="btn variant-ghost me-2">Back</a>
+			<a href="/learn/{type}?dif={difficulty}" class="btn variant-filled">Start</a>
+		</div>
+	</div>
+</div>

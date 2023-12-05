@@ -1,6 +1,11 @@
-# QuickMaths
+# QuickMaths v2
 
-Welcome to QuickMaths, the website where mathematics is made easy and exciting! QuickMaths is committed to enhancing your basic arithmetic skills — addition, subtraction, multiplication, division, power and square root — while providing a platform to challenge friends and family locally.
+Welcome to QuickMaths v2, the website where mathematics is made easy and exciting! QuickMaths v2 is committed to enhancing your basic arithmetic skills — addition, subtraction, multiplication, division, power and square root — while providing a platform to challenge friends and family locally.
+
+## New Version??
+
+In this new version, you'll find a revamped user interface and several exciting features to elevate your mathematical experience.
+Worried about losing the charm of the old version? Don't fret! The old version is still accessible in the "Old" branch on our GitHub repository and on the [QuickMaths website](https://quickmaths-3173b.web.app/). While QuickMaths v2 brings a fresh UI, there are no fundamental changes to the core functionality, so don't be too excited...
 
 ## Learn Mode
 
@@ -12,7 +17,7 @@ Gear up for some friendly competition in Battle Mode! Engage in real-time, local
 
 ## Getting Started
 
-Simply visit the [QuickMaths website](https://quickmaths-3173b.web.app/) on your preferred web browser to begin your mathematical adventure. Switch effortlessly between Learn and Battle Mode and let the mathematical fun commence!
+Simply visit the [QuickMaths v2 website](https://quickmaths-v2.web.app/) on your preferred web browser to begin your mathematical adventure. Switch effortlessly between Learn and Battle Mode and let the mathematical fun commence!
 
 ## Features
 

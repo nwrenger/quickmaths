@@ -2,11 +2,9 @@
 node_modules
 /build
 /.svelte-kit
-/.firebase
 /package
 .env
 .env.*
 !.env.example
-favicon.afdesign
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*

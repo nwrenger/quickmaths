@@ -1,9 +1,9 @@
 <script lang="ts">
-	import LearnView, { Quests } from "../LearnView.svelte";
-	import { difCount, getRandomInt } from "../../../lib/utils";
-	import { page } from "$app/stores";
+	import LearnView, { type Quests } from '../LearnView.svelte';
+	import { difCount, getRandomInt } from '../../../lib/utils';
+	import { page } from '$app/stores';
 
-	let difficulty = parseInt($page.url.searchParams.get("dif") || "2");
+	let difficulty = parseInt($page.url.searchParams.get('dif') || '2');
 
 	// Generates random questions
 	function gen(count: number): Quests[] {
@@ -28,5 +28,5 @@
 
 <!--  Giving the generated questions to the view component  -->
 <section>
-	<LearnView quests={gen(difCount(difficulty))} {difficulty} />
+	<LearnView quests={gen(difCount(difficulty))} {difficulty} type="div" />
 </section>
