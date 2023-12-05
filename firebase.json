@@ -1,6 +1,24 @@
 {
 	"hosting": {
 		"public": "build",
-		"ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+		"ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+		"rewrites": [
+			{
+				"source": "**",
+				"destination": "/index.html"
+			}
+		],
+		"redirects": [
+			{
+				"source": "/learn/*",
+				"destination": "/learn",
+				"type": 301
+			},
+			{
+				"source": "/battle/*",
+				"destination": "/battle",
+				"type": 301
+			}
+		]
 	}
 }
