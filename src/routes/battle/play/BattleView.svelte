@@ -152,9 +152,11 @@
 			{#each quests as quest, index}
 				<Step
 					buttonBack={'hidden'}
-					buttonNext={finished || points1 + points2 >= quests.length ? 'variant-filled' : 'hidden'}
+					buttonNext={finished || points1 + points2 >= quests.length
+						? 'variant-filled mb-4'
+						: 'hidden'}
 					buttonComplete={finished || points1 + points2 >= quests.length
-						? 'variant-filled-primary'
+						? 'variant-filled-primary mb-4'
 						: 'hidden'}
 				>
 					<svelte:fragment slot="header">
@@ -192,12 +194,12 @@
 						>
 					{:else if !finished && points1 + points2 < quests.length}
 						<div class="flex items-center justify-between mx-auto pt-10">
-							<div class="p-0 justify-start">
+							<div class="justify-start">
 								<button class="btn variant-ghost" type="button" on:click={() => (answering = '1')}
 									>Player 1 ("S" Key)</button
 								>
 							</div>
-							<div class="p-0 justify-end">
+							<div class="justify-end">
 								<button class="btn variant-ghost" type="button" on:click={() => (answering = '2')}
 									>Player 2 ("L" Key)</button
 								>
@@ -207,5 +209,6 @@
 				</Step>
 			{/each}
 		</Stepper>
+		<a class="btn variant-ghost justify-center flex-col items-center" href="/battle">Cancel</a>
 	</div>
 </div>
