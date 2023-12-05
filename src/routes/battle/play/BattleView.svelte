@@ -174,9 +174,6 @@
 							placeholder="Input answer..."
 							required
 							disabled={!answering || time >= 100}
-							on:keypress={(e) => {
-								if (e.key == 'Enter') login(quest, index);
-							}}
 						/>
 					</form>
 					{#if quest.isIncorrect != undefined}

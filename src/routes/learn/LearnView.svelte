@@ -68,12 +68,6 @@
 		}
 	}
 
-	// macro for jumping to the tabs
-	function advance() {
-		start += 1;
-		state = {};
-	}
-
 	// warn modal
 	function warn() {
 		const modal: ModalSettings = {
@@ -153,14 +147,6 @@
 								required
 								use:focusTrap={true}
 								disabled={lives < 0}
-								on:keypress={(e) => {
-									if (e.key == 'Enter')
-										if (quests[index + 1]) {
-											advance();
-										} else {
-											end();
-										}
-								}}
 							/>
 						</form>
 						{#if quest.isIncorrect != undefined}
