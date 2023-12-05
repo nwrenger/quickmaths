@@ -15,7 +15,7 @@
 </svelte:head>
 
 <!--  Type Selection  -->
-<div class="container h-full mx-auto flex justify-center items-center">
+<div class="container h-full mx-auto flex justify-center">
 	<div class="space-y-5 flex flex-col items-center text-center lg:w-2/3 w-11/12 pt-4 pb-4">
 		<h2 class="h2">Learn</h2>
 		<p>
