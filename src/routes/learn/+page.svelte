@@ -1,12 +1,15 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { RadioGroup, RadioItem } from '@skeletonlabs/skeleton';
+	import { onMount } from 'svelte';
 
 	let difficulty: number = 2;
 	let type: string = 'add';
 
-	difficulty = parseInt($page.url.searchParams.get('dif') || '2') || 2;
-	type = $page.url.searchParams.get('type') || 'add';
+	onMount(() => {
+		difficulty = parseInt($page.url.searchParams.get('dif') || '2') || 2;
+		type = $page.url.searchParams.get('type') || 'add';
+	});
 </script>
 
 <svelte:head>

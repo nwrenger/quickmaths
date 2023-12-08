@@ -2,9 +2,10 @@
 	import LearnView, { type Quests } from '../LearnView.svelte';
 	import { difCount, getRandomInt } from '../../../lib/utils';
 	import { page } from '$app/stores';
+	import { onMount } from 'svelte';
 
-	let difficulty = parseInt($page.url.searchParams.get('dif') || '2');
-
+	let difficulty = 2;
+	onMount(() => (difficulty = parseInt($page.url.searchParams.get('dif') || '2')));
 	// Generates random questions
 	function gen(count: number): Quests[] {
 		let quests: Quests[] = [];
