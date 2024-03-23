@@ -5,9 +5,10 @@ import { vitePreprocess } from '@sveltejs/kit/vite';
 const config = {
 	extensions: ['.svelte'],
 	preprocess: [vitePreprocess()],
-
 	kit: {
-		adapter: adapter()
+		adapter: adapter({
+			fallback: "404.html",
+		})
 	}
 };
 export default config;
