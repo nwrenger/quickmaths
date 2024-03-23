@@ -18,11 +18,7 @@ export default {
 			themes: {
 				preset: [
 					{
-						name: 'wintry',
-						enhancements: true
-					},
-					{
-						name: 'crimson',
+						name: 'gold-nouveau',
 						enhancements: true
 					}
 				]

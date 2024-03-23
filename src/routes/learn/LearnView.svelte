@@ -111,62 +111,60 @@
 </script>
 
 <!--  Questions View and Answer Input  -->
-<div class="container h-full mx-auto flex justify-center items-center">
-	<div class="space-y-4 lg:w-2/3 w-11/12 pt-4 pb-4">
-		{#key state}
-			<Stepper stepTerm="Question" {start} on:complete={end}>
-				{#each quests as quest, index}
-					<Step>
-						<svelte:fragment slot="navigation">
-							{#if index == 0}
-								<a class="btn variant-ghost" href="/learn?dif={difficulty}&type={type}">Cancel</a>
-							{/if}
-						</svelte:fragment>
-						<svelte:fragment slot="header"
-							><div class="flex items-center justify-between">
-								<h3 class="h3">What is {quest.question}?</h3>
-								<!--  Lives Counter  -->
-								<div class="flex items-center">
-									<h5 class="h5 mr-2">Lives:</h5>
-									<span class="badge variant-filled{lives < 0 ? '-surface' : ''}"
-										>{lives > 0 ? lives : 0}</span
-									>
-								</div>
-							</div>
-						</svelte:fragment>
-						<form use:focusTrap={true}>
-							<input
-								bind:value={userInput[index]}
-								class="input {quest.isIncorrect != undefined
-									? quest.isIncorrect
-										? 'input-error'
-										: 'input-success'
-									: ''}"
-								type="number"
-								placeholder="Input answer..."
-								required
-								use:focusTrap={true}
-								disabled={lives < 0}
-							/>
-						</form>
-						{#if quest.isIncorrect != undefined}
-							{#if quest.isIncorrect}
-								<p class="text-error-500 italic text-center">
-									Wrong, The correct value would be {lives >= 0
-										? quest.userInput
-											? quest.answer > quest.userInput
-												? 'Bigger'
-												: 'Smaller'
-											: 'Idk, Wrong Input'
-										: quest.answer}!
-								</p>
-							{:else}
-								<p class="text-success-500 italic text-center">Looks good!</p>
-							{/if}
+<div class="container !max-w-6xl mx-auto p-4 w-full">
+	{#key state}
+		<Stepper stepTerm="Question" {start} on:complete={end}>
+			{#each quests as quest, index}
+				<Step>
+					<svelte:fragment slot="navigation">
+						{#if index == 0}
+							<a class="btn variant-ghost" href="/learn?dif={difficulty}&type={type}">Cancel</a>
 						{/if}
-					</Step>
-				{/each}
-			</Stepper>
-		{/key}
-	</div>
+					</svelte:fragment>
+					<svelte:fragment slot="header"
+						><div class="flex items-center justify-between">
+							<h3 class="h3">What is {quest.question}?</h3>
+							<!--  Lives Counter  -->
+							<div class="flex items-center">
+								<h5 class="h5 mr-2">Lives:</h5>
+								<span class="badge variant-filled{lives < 0 ? '-surface' : ''}"
+									>{lives > 0 ? lives : 0}</span
+								>
+							</div>
+						</div>
+					</svelte:fragment>
+					<form use:focusTrap={true}>
+						<input
+							bind:value={userInput[index]}
+							class="input {quest.isIncorrect != undefined
+								? quest.isIncorrect
+									? 'input-error'
+									: 'input-success'
+								: ''}"
+							type="number"
+							placeholder="Input answer..."
+							required
+							use:focusTrap={true}
+							disabled={lives < 0}
+						/>
+					</form>
+					{#if quest.isIncorrect != undefined}
+						{#if quest.isIncorrect}
+							<p class="text-error-500 italic text-center">
+								Wrong, The correct value would be {lives >= 0
+									? quest.userInput
+										? quest.answer > quest.userInput
+											? 'Bigger'
+											: 'Smaller'
+										: 'Idk, Wrong Input'
+									: quest.answer}!
+							</p>
+						{:else}
+							<p class="text-success-500 italic text-center">Looks good!</p>
+						{/if}
+					{/if}
+				</Step>
+			{/each}
+		</Stepper>
+	{/key}
 </div>
