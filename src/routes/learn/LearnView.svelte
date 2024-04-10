@@ -33,7 +33,7 @@
 	function validateAnswers(): boolean {
 		let allValid = true;
 		let jump = true;
-		quests.forEach((quest, index) => {
+		for (const [index, quest] of quests.entries()) {
 			if (quest.userInput !== quest.answer) {
 				if (jump && !(lives < 0)) {
 					jump = false;
@@ -49,11 +49,11 @@
 			} else {
 				quest.isIncorrect = false;
 			}
-		});
+		}
 		return allValid;
 	}
 
-	//end function
+	// end function
 	function end() {
 		updateAnswers();
 		if (validateAnswers()) {
