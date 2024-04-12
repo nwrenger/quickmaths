@@ -18,6 +18,7 @@
 
 	// stores
 	import { initializeStores } from '@skeletonlabs/skeleton';
+	import ImageLoader from './ImageLoader.svelte';
 	initializeStores();
 
 	const app: PopupSettings = {
@@ -36,7 +37,7 @@
 		<!-- Page Container -->
 		<div class="page-container !max-w-6xl mx-auto grid grid-cols-[1fr_auto] items-center gap-4 p-4">
 			<button type="button" class="btn-icon" use:popup={app} title="dashboard">
-				<img class="max-w-full rounded-md aspect-square shadow-xl" src="/favicon.png" alt="nw" />
+				<ImageLoader src="/favicon.png" alt="quickmaths" rounded="rounded-sm" />
 			</button>
 
 			<div class="card p-4 w-72 shadow-xl z-10" data-popup="appContents">
