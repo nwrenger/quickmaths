@@ -10,7 +10,6 @@
 		storePopup,
 		type PopupSettings,
 		popup,
-		setInitialClassState
 	} from '@skeletonlabs/skeleton';
 
 	// Floating UI for Popups
@@ -28,8 +27,6 @@
 		placement: 'bottom'
 	};
 </script>
-
-<svelte:head>{@html '<script>(' + setInitialClassState.toString() + ')();</script>'}</svelte:head>
 
 <!-- Modal Store -->
 <Modal />

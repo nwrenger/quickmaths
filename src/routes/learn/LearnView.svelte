@@ -9,18 +9,26 @@
 
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
 	import { Step, Stepper, type ModalSettings, focusTrap } from '@skeletonlabs/skeleton';
 	import { getModalStore } from '@skeletonlabs/skeleton';
+	import { onMount } from 'svelte';
 	const modalStore = getModalStore();
 
 	export let quests: Quests[];
-	export let difficulty: number;
 	export let type: string;
 
-	let lives: number = difficulty > 2 ? 2 : 3;
+	let difficulty = 2;
+	let lives = 0;
 	let userInput: number[] = [];
 	let state = {};
 	let start = 0;
+
+	// update vars to be accurate on load
+	onMount(() => {
+		difficulty = parseInt($page.url.searchParams.get('dif') || '2');
+		lives = difficulty > 2 ? 2 : 3;
+	});
 
 	// update all answers from all fields
 	function updateAnswers() {
