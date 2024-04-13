@@ -1,3 +1,5 @@
+export const prerender = false;
+
 export async function load({ url }) {
 	return {
 		difficulty: parseInt(url.searchParams.get('dif') || '2') || 2,
