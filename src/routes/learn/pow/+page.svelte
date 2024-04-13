@@ -1,20 +1,19 @@
 <script lang="ts">
 	import LearnView, { type Quests } from '../LearnView.svelte';
 	import { difCount, getRandomInt } from '../../../lib/utils';
-	import { page } from '$app/stores';
-	import { onMount } from 'svelte';
+	import type { PageData } from './$types';
 
-	let difficulty = 2;
-	onMount(() => (difficulty = parseInt($page.url.searchParams.get('dif') || '2')));
+	export let data: PageData;
+
 	// Generates random questions
 	function gen(count: number): Quests[] {
 		let quests: Quests[] = [];
 		for (let i = 1; i < count + 1; i++) {
-			let a = getRandomInt(2 * difficulty, 6 * difficulty);
-			let b = getRandomInt(2, difficulty > 1 ? (difficulty > 3 ? 4 : 3) : 2);
+			let a = getRandomInt(2 * data.difficulty, 6 * data.difficulty);
+			let b = getRandomInt(2, data.difficulty > 1 ? (data.difficulty > 3 ? 4 : 3) : 2);
 			while (quests.find((quest) => quest.answer == a ** b)) {
-				a = getRandomInt(2 * difficulty, 6 * difficulty);
-				b = getRandomInt(2, difficulty > 1 ? (difficulty > 3 ? 4 : 3) : 2);
+				a = getRandomInt(2 * data.difficulty, 6 * data.difficulty);
+				b = getRandomInt(2, data.difficulty > 1 ? (data.difficulty > 3 ? 4 : 3) : 2);
 			}
 			quests.push({ question: `${a} ^ ${b}`, answer: a ** b });
 		}
@@ -29,5 +28,5 @@
 
 <!--  Giving the generated questions to the view component  -->
 <section>
-	<LearnView quests={gen(difCount(difficulty))} {difficulty} type="pow" />
+	<LearnView quests={gen(difCount(data.difficulty))} difficulty={data.difficulty} type="pow" />
 </section>
