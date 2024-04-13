@@ -4,11 +4,11 @@
 	import { onMount } from 'svelte';
 
 	let difficulty: number = 2;
-	let type: string = 'add';
+	let type: string = 'rand';
 
 	onMount(() => {
 		difficulty = parseInt($page.url.searchParams.get('dif') || '2') || 2;
-		type = $page.url.searchParams.get('type') || 'add';
+		type = $page.url.searchParams.get('type') || 'rand';
 	});
 </script>
 

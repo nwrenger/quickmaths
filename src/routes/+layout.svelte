@@ -9,7 +9,7 @@
 		Modal,
 		storePopup,
 		type PopupSettings,
-		popup,
+		popup
 	} from '@skeletonlabs/skeleton';
 
 	// Floating UI for Popups
