@@ -32,6 +32,7 @@
 <Modal />
 
 <!-- App Shell -->
+<!-- svelte-ignore element_invalid_self_closing_tag -->
 <AppShell>
 	<svelte:fragment slot="pageHeader">
 		<!-- Page Container -->
@@ -49,12 +50,13 @@
 								class="anchor"
 								href="https://github.com/nwrenger/quickmaths"
 								target="_blank"
-								title="Repository"><i class="fa-solid fa-up-right-from-square" /></a
+								title="Repository"
+								aria-label="Repository"><i class="fa-solid fa-up-right-from-square" /></a
 							>
 						</div>
 						<div class="flex">
 							<span class="opacity-50 flex-auto">nwrenger</span>
-							<a class="anchor" href="https://github.com/nwrenger" target="_blank" title="Profile"
+							<a class="anchor" href="https://github.com/nwrenger" target="_blank" title="Profile" aria-label="Profile"
 								><i class="fa-solid fa-up-right-from-square" /></a
 							>
 						</div>

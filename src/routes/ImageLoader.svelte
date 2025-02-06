@@ -20,7 +20,7 @@
 </script>
 
 {#if !loaded}
-	<div class="{base} placeholder animate-pulse" />
+	<div class="{base} placeholder animate-pulse"></div>
 {/if}
 
 {#if mounted}
