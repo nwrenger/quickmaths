@@ -26,6 +26,7 @@
 		target: 'appContents',
 		placement: 'bottom'
 	};
+	const year = new Date().getFullYear();
 </script>
 
 <!-- Modal Store -->
@@ -56,8 +57,12 @@
 						</div>
 						<div class="flex">
 							<span class="opacity-50 flex-auto">nwrenger</span>
-							<a class="anchor" href="https://github.com/nwrenger" target="_blank" title="Profile" aria-label="Profile"
-								><i class="fa-solid fa-up-right-from-square" /></a
+							<a
+								class="anchor"
+								href="https://github.com/nwrenger"
+								target="_blank"
+								title="Profile"
+								aria-label="Profile"><i class="fa-solid fa-up-right-from-square" /></a
 							>
 						</div>
 					</div>
@@ -73,4 +78,20 @@
 	</svelte:fragment>
 	<!-- Page Route Content -->
 	<slot />
+
+	<svelte:fragment slot="footer">
+		<footer class="dark:border-surface-800 border-surface-200 border-t">
+			<div
+				class="mx-auto flex max-w-6xl flex-row items-center justify-between gap-3 px-4 py-6 text-sm"
+			>
+				<p class="text-surface-600 text-center text-xs sm:text-sm">
+					<span class="opacity-80">© {year}</span> · <span class="font-medium">Nils Wrenger</span>
+				</p>
+
+				<div class="flex flex-wrap items-center gap-4">
+					<a href="/privacy-policy" class="anchor text-center">Privacy Policy</a>
+				</div>
+			</div>
+		</footer>
+	</svelte:fragment>
 </AppShell>
