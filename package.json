@@ -5,7 +5,7 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
-		"postbuild": "bunx svelte-sitemap -d https://flip.nwrenger.dev -i '404.html' -c weekly -r",
+		"postbuild": "bunx svelte-sitemap -d https://quickmaths.nwrenger.dev -i '404.html' -c weekly -r",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
