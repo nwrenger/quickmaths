@@ -5,6 +5,7 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
+		"postbuild": "bunx svelte-sitemap -d https://flip.nwrenger.dev -i '404.html' -c weekly -r",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
@@ -12,26 +13,27 @@
 		"format": "prettier --write ."
 	},
 	"devDependencies": {
+		"@floating-ui/dom": "1.5.3",
+		"@fortawesome/fontawesome-free": "^6.7.2",
+		"@skeletonlabs/skeleton": "2.5.1",
+		"@skeletonlabs/tw-plugin": "0.2.4",
 		"@sveltejs/adapter-auto": "^2.1.1",
+		"@sveltejs/adapter-static": "^3.0.8",
 		"@sveltejs/kit": "^2.17.1",
+		"@tailwindcss/forms": "0.5.7",
+		"@types/node": "20.10.3",
+		"autoprefixer": "10.4.16",
+		"postcss": "8.4.32",
 		"prettier": "^3.4.2",
 		"prettier-plugin-svelte": "^3.3.3",
 		"svelte": "^4.2.19",
 		"svelte-check": "^3.8.6",
+		"svelte-sitemap": "^2.7.1",
+		"tailwindcss": "3.3.6",
 		"tslib": "^2.8.1",
 		"typescript": "^5.7.3",
 		"vite": "^5.4.14",
-		"postcss": "8.4.32",
-		"autoprefixer": "10.4.16",
-		"tailwindcss": "3.3.6",
-		"@skeletonlabs/skeleton": "2.5.1",
-		"@skeletonlabs/tw-plugin": "0.2.4",
-		"vite-plugin-tailwind-purgecss": "0.1.4",
-		"@tailwindcss/forms": "0.5.7",
-		"@types/node": "20.10.3",
-		"@floating-ui/dom": "1.5.3",
-		"@fortawesome/fontawesome-free": "^6.7.2",
-		"@sveltejs/adapter-static": "^3.0.8"
+		"vite-plugin-tailwind-purgecss": "0.1.4"
 	},
 	"type": "module"
 }
