@@ -76,10 +76,11 @@
 			/>
 		</div>
 	</svelte:fragment>
+
 	<!-- Page Route Content -->
 	<slot />
 
-	<svelte:fragment slot="footer">
+	<svelte:fragment slot="pageFooter">
 		<footer class="dark:border-surface-800 border-surface-200 border-t">
 			<div
 				class="mx-auto flex max-w-6xl flex-row items-center justify-between gap-3 px-4 py-6 text-sm"
